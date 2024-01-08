@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Segmentation - {{ table_name }}</title>
+    <link rel="icon" href={{ url_for('static', filename='img/favicon.ico') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/segmentation.css') }}>
+</head>
+<body>
+  <div class="top-bar">
+    <!-- Logo -->
+    <a href="/dashboard"><img id="logo" src="{{ url_for('static', filename='img/logo-full.svg') }}" alt="Logo"></a>
+
+    <!-- Top Right Buttons -->
+    <div id="topRightButtons" class="button-container">
+
+      {% if is_admin %}
+        <!-- Add Device Button -->
+        <button id="addDeviceButton" class="top-right-button"><strong>ADD DEVICE</strong></button>
+        <span class="separator"></span>
+
+        <!-- Edit Device -->
+        <button id="editDeviceButton" class="top-right-button"><strong>EDIT DEVICE</strong></button>
+        <span class="separator"></span>
+
+        <!-- Manage Users -->
+        <a href="/manage-users" id="manageUsersButton" class="top-right-button"><strong>MANAGE USERS</strong></a>
+        <span class="separator"></span>
+      {% endif %}
+      
+      <form action="{{ url_for('download_csv', category=category) }}" method="get">
+        <button type="submit" id="reportButton" class="top-right-button"><strong>REPORT</strong></button>
+        <span class="separator"></span>
+      </form>
+
+      <!-- Search Bar -->
+      <input type="text" id="searchInput" class="search-bar" placeholder="Search by Device Name, SNID, Tag, Model, User, IP Addres, or Mobile Number">
+      <img id="searchIcon" src="{{ url_for('static', filename='img/icon-search-blue.svg') }}" alt="Search">
+      <span class="separator"></span>
+
+      <!-- Logout -->
+      <a href="{{ url_for('logout') }}"><img id="logoutIcon" src="{{ url_for('static', filename='img/icon-logout-blue.svg') }}" alt="Logout" onclick="logout()"></a> 
+    </div>
+  </div>
+
+  <!-- Add Device Popup -->
+  <div id="addDevicePopup" class="modal">
+    <div class="modal-content">
+      <span id="closeAddDevicePopup" class="close">&times;</span>
+      <h2>Add Device Information</h2>
+      <form id="addDeviceForm" action="/add_device" method="POST">
+        <button type="submit">Add Device</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Device Popup -->
+  <div id="deviceInfoPopup" class="modal">
+    <div class="modal-content">
+      <span id="closeDeviceInfoPopup" class="close">&times;</span>
+      <h2>Edit Device Information</h2>
+      <form id="editDeviceForm">
+        <button type="submit" id="saveChangesButton">Save Changes</button>
+        <button type="button" id="deleteDeviceButton">Delete Device</button>
+        <button type="button" id="moveToStockButton">Move to Stock</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Ribbon Section -->
+  <div class="ribbon">
+    <!-- Ribbon Title -->
+    <p id="ribbonTitle" class="ribbon-title">
+      <strong>{% if is_admin %}Admin Dashboard{% else %}Dashboard{% endif %}</strong>
+      <span class="separator">
+        <strong>|</strong>
+      </span>
+      {{ table_name }}
+    </p>
+    <!-- Dashboard Button -->
+    <a href="/dashboard" id="categoryButton" class="ribbon-button">
+      <strong>Categories</strong>
+    </a>
+  </div>
+
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        {% for column in columns[1:] %}
+          <th>{{ column_mapping.get(column, column) }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for device in devices %}
+        <tr data-device-id="{{ device[0] }}">
+          {% for value, column in zip(device[1:], columns[1:]) %}
+            <td {% if column == 'status' %}class="status-cell {{ value|lower|replace(' ', '-') }}"{% endif %}>
+              {{ value }}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p id="noResultsMessage">No results found</p>
+
+  <script src="{{ url_for('static', filename='js/addDevice.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/editDevice.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+</body>
+</html>

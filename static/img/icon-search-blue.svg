@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>SEARCH</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ICONS-/--SEARCH-BLUE" fill="#007DB3" fill-rule="nonzero">
+            <g id="SEARCH">
+                <path d="M12.3198574,10.9056439 L15.103203,13.6889894 C15.4937273,14.0795137 15.4937273,14.7126787 15.103203,15.103203 C14.7126787,15.4937273 14.0795137,15.4937273 13.6889894,15.103203 L10.9056439,12.3198574 C11.4338662,11.9092447 11.9092447,11.4338662 12.3198574,10.9056439 Z" id="Combined-Shape"></path>
+                <path d="M6,10 C8.209139,10 10,8.209139 10,6 C10,3.790861 8.209139,2 6,2 C3.790861,2 2,3.790861 2,6 C2,8.209139 3.790861,10 6,10 Z M6,12 C2.6862915,12 0,9.3137085 0,6 C0,2.6862915 2.6862915,0 6,0 C9.3137085,0 12,2.6862915 12,6 C12,9.3137085 9.3137085,12 6,12 Z" id="Oval-2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

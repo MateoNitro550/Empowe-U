@@ -1,0 +1,83 @@
+body {
+  background-image: url('/static/img/login.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.ribbon {
+  align-items: center;
+  background-color: #FFFFFF;
+  display: flex;
+  height: 100px;
+  padding: 0px 40px;
+}
+
+.ribbon img {
+  width: 350px;
+  height: auto;
+}
+
+.black-box {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  height: 50%;
+  position: fixed;
+  top: calc(40px + 50%);
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 1;
+}
+
+.title {
+  color: #FFFFFF;
+  display: flex;
+  font-size: 25px;
+  z-index: 2;
+  flex-direction: column;
+  margin: 0 -100px 0 auto;
+}
+
+.login-container {
+  background-color: #FFFFFF;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  width: 15%;
+  z-index: 2;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  border: 1px solid #EDEDED;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 5px 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.login-container input[type="submit"] {
+  background-color: #007DB3;  
+  border: 1px solid #007DB3;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  margin: 5px 0;
+  padding: 10px;
+  width: 100%;
+}
+
+#avatarIcon {
+  display: block;
+  height: 50px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 45px;
+}

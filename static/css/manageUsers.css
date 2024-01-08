@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top Bar Styles */
+.top-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 26px;
+}
+
+/* Button Container Styles */
+.button-container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#logo {
+  cursor: pointer;
+}
+
+#logoutIcon {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+
+/* Dashboard Button Styles */
+#dashboardButton {
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF; 
+  color: #007DB3;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0px 10px;
+  text-decoration: none;
+}
+
+#dashboardButton:hover {
+  background-color: #EDEDED;
+}
+
+/* Separator Styles */
+.separator {
+  padding: 10px;
+}
+
+/* Ribbon Section Styles */
+.ribbon {
+  align-items: center;
+  background-color: #007DB3;
+  display: flex;
+  height: 72px;
+  justify-content: space-between;
+  padding: 0px 45px;
+  vertical-align: top;
+}
+
+/* Ribbon Title Styles */
+.ribbon-title {
+  color: #FFFFFF;
+  font-size: 24px;
+}

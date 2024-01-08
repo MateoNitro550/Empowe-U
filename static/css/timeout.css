@@ -1,0 +1,43 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
+.ribbon {
+  align-items: center;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #8C8C8C;
+  display: flex;
+  height: 100px;
+  padding: 0px 40px;
+}
+
+.ribbon img {
+  width: 350px;
+  height: auto;
+}
+
+.message-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.session-timeout {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.login-again {
+  font-size: 18px;
+}
+
+.login-link {
+  color: #007DB3;
+  cursor: pointer;
+}

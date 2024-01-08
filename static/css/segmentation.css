@@ -1,0 +1,285 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top Bar Styles */
+.top-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 26px;
+}
+
+/* Button Container Styles */
+.button-container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#logo {
+  cursor: pointer;
+}
+
+#searchIcon {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+#filterIcon {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+#logoutIcon {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+
+/* Add Device Button Styles */
+#addDeviceButton {
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF; 
+  color: #007DB3;
+  cursor: pointer;
+  font-size: 20px;
+  height: 100px;
+  padding: 0px 10px;
+}
+
+#addDeviceButton:hover {
+  background-color: #EDEDED;
+}
+
+/* Edit Device Button Styles */
+#editDeviceButton {
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF; 
+  color: #007DB3;
+  cursor: pointer;
+  font-size: 20px;
+  height: 100px;
+  padding: 0px 10px;
+}
+
+#editDeviceButton:hover {
+  background-color: #EDEDED;
+}
+
+/* Manage Users Button Styles */
+#manageUsersButton {
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF; 
+  color: #007DB3;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0px 10px;
+  text-decoration: none;
+}
+
+#manageUsersButton:hover {
+  background-color: #EDEDED;
+}
+
+/* Report Button Styles */
+#reportButton {
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF; 
+  color: #007DB3;
+  cursor: pointer;
+  font-size: 20px;
+  height: 100px;
+  padding: 0px 10px;
+}
+
+#reportButton:hover {
+  background-color: #EDEDED;
+}
+
+/* Ribbon Section Styles */
+.ribbon {
+  align-items: center;
+  background-color: #007DB3;
+  display: flex;
+  height: 72px;
+  justify-content: space-between;
+  padding: 0px 45px;
+  vertical-align: top;
+}
+
+/* Ribbon Title Styles */
+.ribbon-title {
+  color: #FFFFFF;
+  font-size: 24px;
+}
+
+/* Separator Styles */
+.separator {
+  padding: 10px;
+}
+
+/* Stock Button Styles */
+.ribbon-button {
+  background-color: #FFFFFF;
+  border: 1px solid #007DB3;
+  border-radius: 10px;
+  color: #007DB3;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px 14px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.ribbon-button:hover {
+  border: 1px solid #FFFFFF;
+}
+
+/* Category Button Styles */
+.category-button {
+  background-color: #FFFFFF;
+  border: 1px solid #007DB3;
+  border-radius: 10px;
+  color: #007DB3;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px 14px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category-button:hover {
+  border: 1px solid #FFFFFF;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  border: 1px solid #D9D9D9;
+  border-radius: 10px;
+  outline: none;
+  padding: 5px;
+  position: relative;
+  right: 10px;
+  width: 470px;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+/* Dropdown Content Styles */
+.dropdown-content {
+  background-color: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  display: none;
+  min-width: 300px;
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 25px);
+  transform: translateX(-84%);
+}
+
+.dropdown-content label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Table Styles */
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+thead {
+  background-color: #D9D9D9;
+}
+
+table tbody tr:hover {
+  background-color: #F2F2F2;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+/* Status Colors */
+.status-cell {
+  font-weight: bold;
+}
+
+.active {
+  color: #008000;
+}
+
+.broken {
+  color: #FF0000;
+}
+
+.needs-repair {
+  color: #FFBF00;
+}
+
+/* Default color for other statuses */
+.status-cell:not(.active):not(.broken):not(.needs-repair) {
+  color: #808080;
+}
+
+/* Modal Styles */
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Modal Content Styles */
+.modal-content {
+  background-color: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  margin: 15% auto;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.modal-content label {
+  display: block;
+  margin: 5px 0;
+}
+
+/* Edit Mode Styles */
+.edit-mode {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#editDeviceButton.edit-mode {
+  text-decoration: underline;
+}
+
+/* No Results Message Styles */
+#noResultsMessage {
+  color: #000000;
+  display: none;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
