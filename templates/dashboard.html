@@ -1,61 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Dashboard</title>
-    <link rel="icon" href={{ url_for('static', filename='img/favicon.ico') }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/dashboard.css') }}>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 </head>
 <body>
-  <div class="top-bar">
-    <!-- Logo -->
-    <a href="/dashboard"><img id="logo" src="{{ url_for('static', filename='img/logo-full.svg') }}" alt="Logo"></a>
 
-    <!-- Top Right Buttons -->
-    <div id="topRightButtons" class="button-container">
-      <!-- Report -->
-      <!--
-      <button id="reportButton" class="top-right-button"><strong>REPORT</strong></button>
-      <span class="separator"></span>
-      -->
+  <div class="menu-icon" onclick="toggleMenu()">
+    <img id="menuIcon" src="{{ url_for('static', filename='img/icon-hamburger-green.svg') }}" alt="Menu Icon">
+  </div>
 
-      {% if is_admin %}
-        <!-- Manage Users -->
-        <a href="/manage-users" id="manageUsersButton" class="top-right-button"><strong>MANAGE USERS</strong></a>
-        <span class="separator"></span>
-      {% endif %}
-
-      <!-- Logout -->
-      <a href="{{ url_for('logout') }}"><img id="logoutIcon" src="{{ url_for('static', filename='img/icon-logout-blue.svg') }}" alt="Logout" onclick="logout()"></a> 
+  <div class="menu-container" id="menuContainer">
+    <div class="menu-content">
+      <a href="/tips" class="menu-item">Tips</a>
+      <a href="/ai" class="menu-item">AI</a>
+      <a href="/experts" class="menu-item">Experts</a>
+      <a href="/community" class="menu-item">Community</a>
+    </div>
+    <div class="logout-container">
+      <a href="/logout" class="menu-item">Logout</a>
     </div>
   </div>
 
-  <div class="ribbon">
-    <!-- Ribbon Title -->
-    <p id="ribbonTitle" class="ribbon-title">
-      <strong>{% if is_admin %}Admin Dashboard{% else %}Dashboard{% endif %}</strong>
-    </p>
+  <div class="icon-container">
+    <a href="/tips" class="icon">
+      <img src="{{ url_for('static', filename='img/tips.png') }}" alt="Tips Icon">
+    </a>
+    <a href="/ai" class="icon">
+      <img src="{{ url_for('static', filename='img/ai.png') }}" alt="AI Icon">
+    </a>
+    <a href="/experts" class="icon">
+      <img src="{{ url_for('static', filename='img/experts.png') }}" alt="Experts Icon">
+    </a>
+    <a href="/community" class="icon">
+      <img src="{{ url_for('static', filename='img/community.png') }}" alt="Community Icon">
+    </a>
   </div>
 
-  <!-- Table for Categories -->
-  <div class="dashboard-container">
-    <div class="categories-table">
-        <h3>Categories</h3>
-        <div id="categoryButtons" class="category-buttons-container">
-          {% for category in categories %}
-            <a href="{{ url_for('segmentation', category=category) }}">
-              <hr>
-              <button class="category-button">{{ column_mapping.get(category, category) }}</button>
-            </a>
-          {% endfor %}
-        </div>
-    </div>
-    <div class="chart-container">
-      <div id="chart-container"></div>
-    </div>
-  </div>
-
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='js/totalCountChart.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/timeout.js') }}"></script>
+  <script>
+    function toggleMenu() {
+      var menuContainer = document.getElementById("menuContainer");
+      menuContainer.style.width = (menuContainer.style.width === "250px") ? "0" : "250px";
+    }
+  </script>
 </body>
 </html>

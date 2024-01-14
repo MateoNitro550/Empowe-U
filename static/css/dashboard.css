@@ -1,148 +1,88 @@
 body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* Top Bar Styles */
-.top-bar {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  height: 100px;
-  padding: 0px 26px;
+.menu-icon {
+    cursor: pointer;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
-/* Button Container Styles */
-.button-container {
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
+.menu-icon img {
+    height: 20px;
 }
 
-#logo {
-  cursor: pointer;
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #F1F1F1;
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
 }
 
-#logoutIcon {
-  cursor: pointer;
-  height: 40px;
-  width: 40px;
+.menu-content {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Report Button Styles */
-#reportButton {
-  background-color: #FFFFFF;
-  border: 1px solid #FFFFFF; 
-  color: #007DB3;
-  cursor: pointer;
-  font-size: 20px;
-  height: 100px;
-  padding: 0px 10px;
+.menu-item {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
-#reportButton:hover {
-  background-color: #EDEDED;
+.menu-item:hover {
+    background-color: #DDD;
 }
 
-/* Manage Users Button Styles */
-#manageUsersButton {
-  background-color: #FFFFFF;
-  border: 1px solid #FFFFFF; 
-  color: #007DB3;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 0px 10px;
-  text-decoration: none;
+.logout-container {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
 }
 
-#manageUsersButton:hover {
-  background-color: #EDEDED;
+.icon-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    text-align: center;
+    margin-top: 50px;
 }
 
-/* Separator Styles */
-.separator {
-  padding: 10px;
+.icon {
+    text-decoration: none;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 25px;
 }
 
-/* Ribbon Section Styles */
-.ribbon {
-  align-items: center;
-  background-color: #007DB3;
-  display: flex;
-  height: 72px;
-  justify-content: space-between;
-  padding: 0px 45px;
-  vertical-align: top;
+.icon img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
-/* Ribbon Title Styles */
-.ribbon-title {
-  color: #FFFFFF;
-  font-size: 24px;
-}
-
-/* Category Table Styles */
-.categories-table {
-  border: 1px solid #000000;
-  border-radius: 20px;
-  float: left;
-  margin-right: 200px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.categories-table hr {
-  border: none;
-  border-top: 1px solid #000000;
-  margin: 0;
-}
-
-.categories-table h3 {
-  background-color: #007DB3;
-  color: #FFFFFF;
-  font-size: 24px;
-  margin: 0;
-  padding: 10px;
-  width: 300px;
-}
-
-.category-buttons-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* Category Button Styles */
-.category-button {
-  background-color: #FFFFFF;
-  border: none;
-  box-sizing: border-box;
-  color: #007DB3;
-  cursor: pointer;
-  font-size: 22px;
-  margin: 0;
-  padding: 30px 14px;
-  transition: background-color 0.3s, color 0.3s;
-  width: 100%;
-}
-
-.category-button:hover {
-  background-color: #EDEDED;
-  color: #007DB3;
-}
-
-.dashboard-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 20px;
-  height: 80vh;
-}
-
-/* Chart Container Styles */
-.chart-container {
-  text-align: center;
-  padding-top: 100px;
+.icon:hover {
+    background-color: #DDD;
 }

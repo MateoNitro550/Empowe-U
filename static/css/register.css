@@ -43,15 +43,20 @@ body {
     height: auto;
 }
 
-.login-container {
+#error-message {
+    color: #FF0000;
+    font-size: 14px;
+}
+
+.register-container {
     background-color: #FFFFFF;
     padding: 20px;
     box-sizing: border-box;
     width: 80%;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.register-container input[type="text"],
+.register-container input[type="password"] {
     border: 1px solid #EDEDED;
     border-radius: 4px;
     box-sizing: border-box;
@@ -61,7 +66,7 @@ body {
     width: calc(100% - 20px);
 }
 
-.login-container input[type="submit"] {
+.register-container input[type="submit"] {
     background-color: #B6E2D3;
     border: 1px solid #B6E2D3;
     border-radius: 4px;
@@ -75,7 +80,7 @@ body {
     width: calc(100% - 20px);
 }
 
-#registration {
+#login {
     color: #000000;
     font-size: 14px;
 }

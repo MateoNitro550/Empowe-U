@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questionnaire.css') }}">
+</head>
+<body>
+
+    <form method="post" action="/questionnaire" id="questionForm">
+        {% for question in questions %}
+            <div class="question" id="question{{ question.id }}" {% if loop.index != 1 %}style="display: none;"{% endif %}>
+                <p class="question-text">{{ question.text }}</p>
+                {% for option in question.options %}
+                    <label class="answer-label">
+                        <input type="radio" name="answer_{{ question.id }}" value="{{ option }}" class="answer-radio">
+                        {{ option }}
+                    </label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <div class="button-container">
+            <button type="button" onclick="navigate(-1)" id="backButton" class="navigation-button" disabled>Back</button>
+            <button type="submit" id="submitButton" class="submit-button" style="display: none;">Submit</button>
+            <button type="button" onclick="navigate(1)" id="nextButton" class="navigation-button">Next</button>
+        </div>
+    </form>
+
+    <script>
+        var currentQuestion = 1;
+
+        function navigate(direction) {
+            var current = document.getElementById("question" + currentQuestion);
+            current.style.display = "none";
+
+            currentQuestion += direction;
+
+            var next = document.getElementById("question" + currentQuestion);
+            next.style.display = "block";
+
+            document.getElementById('backButton').disabled = currentQuestion === 1;
+
+            if (currentQuestion === {{ questions|length }}) {
+                document.getElementById('nextButton').style.display = 'none';
+                document.getElementById('submitButton').style.display = 'block';
+            } else {
+                document.getElementById('nextButton').style.display = 'block';
+                document.getElementById('submitButton').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

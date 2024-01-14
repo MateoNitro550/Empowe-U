@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="icon" href={{ url_for('static', filename='img/favicon.ico') }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/login.css') }}>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
-  <div class="ribbon">
-    <img src="{{ url_for('static', filename='img/logo-full.svg') }}" alt="Logo">
-  </div>
+    <div class="ribbon">
+        <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+    </div>
 
-  <div class="black-box">
-    <div class="title">
-      <h1>IT Inventory & Assets Management</h1>
+    <div class="black-box">
+        <div class="title">
+            <h1>Empower U</h1>
+        </div>
+        <div class="login-container">
+            <img id="avatarIcon" src="{{ url_for('static', filename='img/icon-avatar-green.svg') }}" alt="Avatar">
+            <form method="post" action="/login">
+                <input type="text" id="username" name="username" placeholder="Username" required><br>
+                <input type="password" id="password" name="password" placeholder="Password" required><br>
+                <input type="submit" value="LOGIN">
+            </form>
+            <p id="registration">¿Aún no estás registrado? <a href="/register">¡Regístrate ahora!</a></p>
+        </div>
     </div>
-    <div class="login-container">
-      <img id="avatarIcon" src="{{ url_for('static', filename='img/icon-avatar-blue.svg') }}" alt="Avatar">
-      <form method="post" action="/login">
-        <input type="text" id="username" name="username" placeholder="Username" required><br><br>
-        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
-        <input type="submit" value="LOGIN">
-      </form>
-    </div>
-  </div>
 </body>
 </html>
