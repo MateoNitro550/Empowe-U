@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <link rel="icon" href="/static/img/favicon.ico">
+  <link rel="stylesheet" href="/static/css/ai.css">
+</head>
+<body>
+    <div id="gif-container">
+        <button onclick="changeGif(-1)">◀</button>
+        <img id="current-gif" src="/static/img/ai/gif1.webp" alt="GIF">
+        <button onclick="changeGif(1)">▶</button>
+    </div>
+
+    <div id="chat-container">
+        <div id="chat-history"></div>
+        <div id="user-input-container">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje..." onkeydown="handleKeyPress(event)">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        var currentGifIndex = 1;
+        var totalGifs = 6;
+
+        function changeGif(direction) {
+            currentGifIndex += direction;
+            if (currentGifIndex < 1) {
+                currentGifIndex = totalGifs;
+            } else if (currentGifIndex > totalGifs) {
+                currentGifIndex = 1;
+            }
+
+            var gifElement = document.getElementById('current-gif');
+            gifElement.src = '/static/img/ai/gif' + currentGifIndex + '.webp';
+        }
+
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value;
+            
+            fetch('/ai', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'user_message=' + encodeURIComponent(userInput),
+            })
+            .then(response => response.json())
+            .then(data => {
+                var chatHistory = document.getElementById('chat-history');
+                chatHistory.innerHTML += '<div class="user-message">User: ' + userInput + '</div>';
+                chatHistory.innerHTML += '<div class="ai-message">AI: ' + data.ai_response + '</div>';
+                document.getElementById('user-input').value = '';
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            });
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

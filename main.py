@@ -3,6 +3,7 @@
 import os
 import secrets
 import mysql.connector
+from openai import OpenAI
 from passlib.hash import sha256_crypt
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 
@@ -17,6 +18,8 @@ db_config = {
     'password': os.environ.get('DB_PASSWORD', 'password'),
     'database': os.environ.get('DB_NAME', 'database')
 }
+
+client = OpenAI(api_key='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')
 
 questions = [
     {'id': 1, 'category': 'Weight', 'text': '¿Cómo te sientes con tu peso actual?', 'options': ['Muy satisfecho/a', 'Satisfecho/a', 'Neutral', 'Insatisfecho/a', 'Muy insatisfecho/a'], 'value_mapping': {'Muy satisfecho/a': 0, 'Satisfecho/a': 1, 'Neutral': 2, 'Insatisfecho/a': 3, 'Muy insatisfecho/a': 4}},
@@ -179,9 +182,35 @@ def questionnaire():
 def tips():
     return render_template('tips.html')
 
-@app.route('/ai')
+@app.route('/ai', methods=['GET', 'POST'])
 def ai():
+    if request.method == 'POST':
+        user_message = request.form['user_message']
+        ai_response = generate_ai_response(user_message)
+        return jsonify({'ai_response': ai_response})
+
     return render_template('ai.html')
+
+def generate_ai_response(user_message):
+    system_message = "Necesito que actúes como un amigo, sin decirme que vas a actuar como tal. La persona con la que vas a hablar tiene una inseguridad en su peso. Debes hacerle sentir en un lugar seguro y confiada de la información que te está proporcionando. Utiliza un lenguaje natural de amigos, nada forzado. Pero que las respuestas no sean excesivamente largas, recuerda que esto es un chat."
+
+    messages = [
+        {"role": "system", "content": system_message},
+        {"role": "user", "content": user_message},
+    ]
+
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        temperature=1,
+        max_tokens=256,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+
+    response_message = response.choices[0].message.content
+    return response_message
 
 @app.route('/experts')
 def experts():

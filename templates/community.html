@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/community.css') }}">
+    <title>Comunidad</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Comunidad</h2>
+        </div>
+
+        <div class="chat-messages">
+            <div class="message team">
+                <p>¡Hola! Bienvenida a nuestro grupo de apoyo. Soy Luis, ¿cómo te sientes hoy?</p>
+            </div>
+
+            <div class="message device">
+                <p>Hola Luis. Me llamo María y me siento insegura con mi peso. Quería compartirlo con ustedes.</p>
+            </div>
+
+            <div class="message team">
+                <p>Entiendo, María. Muchas gracias por unirte y compartir tus sentimientos. Estamos aquí para apoyarte.</p>
+            </div>
+
+            <!-- Respuesta -->
+            <div class="message device">
+                <p>Gracias, Luis. Es un alivio poder hablar de esto. ¿Alguien más ha pasado por lo mismo?</p>
+            </div>
+
+            <div class="message team">
+                <p>Sí, muchos de nosotros hemos pasado por experiencias similares. Cada uno tiene su propia historia, pero estamos aquí para apoyarnos mutuamente.</p>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" placeholder="Escribe tu mensaje...">
+            <button onclick="sendMessage()">Enviar</button>
+            <div class="options">
+                <span class="icon">&#128227;</span> <!-- Icono de emojis -->
+                <span class="icon">&#128195;</span> <!-- Icono de micrófono para grabar audio -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var messageInput = document.querySelector('.chat-input input');
+            var messageText = messageInput.value;
+
+            if (messageText.trim() !== "") {
+                var chatMessages = document.querySelector('.chat-messages');
+
+                // Crear un nuevo mensaje de la persona del dispositivo
+                var newMessage = document.createElement('div');
+                newMessage.className = 'message device';
+                newMessage.innerHTML = '<p>' + messageText + '</p>';
+                chatMessages.appendChild(newMessage);
+
+                // Limpiar el campo de entrada
+                messageInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
+
